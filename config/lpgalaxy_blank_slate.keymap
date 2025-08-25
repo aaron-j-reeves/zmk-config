@@ -21,6 +21,11 @@
             bindings = <&bootloader>;
             key-positions = <11 0>;
         };
+
+        studiounlock {
+            bindings = <&studio_unlock>;
+            key-positions = <36 47>;
+        };
     };
 
     keymap {
@@ -28,46 +33,46 @@
 
         base_layer {
             bindings = <
-&kp ESC                     &kp Q     &kp W                  &kp E                &kp R         &kp T      &kp Y        &kp U             &kp I      &kp O      &kp P     &kp BSPC
-&kp TAB                     &kp A     &kp S                  &kp D                &kp F         &kp G      &kp H        &kp J             &kp K      &kp L      &kp SEMI  &kp SQT
-&mt LSHFT LEFT_PARENTHESIS  &kp Z     &kp X                  &kp C                &kp V         &kp B      &kp N        &kp M             &kp COMMA  &kp DOT    &kp UP    &mt RIGHT_SHIFT RIGHT_PARENTHESIS
-&kp LCTRL                   &kp LGUI  &mt LALT LEFT_BRACKET  &lt 1 RIGHT_BRACKET  &lt 3 RETURN  &kp SPACE  &lt 4 SLASH  &lt 2 LEFT_ARROW  &kp DOWN   &kp RIGHT
+&kp ESC                     &kp Q     &kp W                  &kp E                &kp R         &kp T      &kp Y        &kp U             &kp I      &kp O      &kp P      &kp BSPC
+&kp TAB                     &kp A     &kp S                  &kp D                &kp F         &kp G      &kp H        &kp J             &kp K      &kp L      &kp SEMI   &kp SQT
+&mt LSHFT LEFT_PARENTHESIS  &kp Z     &kp X                  &kp C                &kp V         &kp B      &kp N        &kp M             &kp COMMA  &kp DOT    &kp SLASH  &mt RIGHT_SHIFT RIGHT_PARENTHESIS
+&kp LCTRL                   &kp LGUI  &mt LALT LEFT_BRACKET  &lt 1 RIGHT_BRACKET  &lt 3 RETURN  &kp SPACE  &lt 2 SLASH  &lt 4 LEFT_ARROW  &kp DOWN   &kp RIGHT
             >;
         };
 
-        num_layer {
+        num {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans     &trans     &kp N7   &kp N8     &kp N9  &trans    &kp DEL
-&trans  &trans  &trans  &trans  &trans  &trans     &kp LBKT   &kp N4   &kp N5     &kp N6  &kp RBKT  &trans
-&trans  &trans  &trans  &trans  &trans  &trans     &kp EQUAL  &kp N1   &kp N2     &kp N3  &kp END   &trans
-&trans  &trans  &trans  &trans  &trans  &kp MINUS  &kp N0     &kp DOT  &kp COMMA  &trans
+&kp GRAVE  &none   &none   &none   &none      &none      &none      &kp N7   &kp N8     &kp N9   &none     &kp DEL
+&trans     &none   &none   &none   &none      &none      &kp LBKT   &kp N4   &kp N5     &kp N6   &kp RBKT  &trans
+&trans     &none   &none   &none   &none      &none      &kp EQUAL  &kp N1   &kp N2     &kp N3   &kp END   &studio_unlock
+&trans     &trans  &trans  &trans  &kp SPACE  &kp MINUS  &kp N0     &kp DOT  &kp COMMA  &kp RET
             >;
         };
 
-        nav_layer {
+        nav {
             bindings = <
-&kp LS(UP)             &kp HOME      &kp LA(LEFT)      &kp UP        &kp LA(RIGHT)      &kp END        &kp C_PREV  &msc SCRL_UP    &mkp LCLK       &mmv MOVE_UP    &mkp RCLK        &trans
-&kp LS(LA(LC(RIGHT)))  &kp LS(LEFT)  &kp LEFT          &kp DOWN      &kp RIGHT          &kp LS(RIGHT)  &kp C_NEXT  &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans
-&kp LS(LA(LC(LEFT)))   &kp LS(HOME)  &kp LS(LA(LEFT))  &kp LS(DOWN)  &kp LS(LA(RIGHT))  &kp LS(END)    &mkp MB5    &mkp MB4        &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &trans
-&trans                 &trans        &trans            &trans        &trans             &trans         &trans      &trans          &trans          &trans
+&kp LS(UP)             &kp HOME      &kp LA(LEFT)      &kp UP        &kp LA(RIGHT)      &kp END        &mkp MB4  &mkp LCLK       &mmv MOVE_UP    &mkp RCLK        &msc SCRL_UP    &trans
+&kp LS(LA(LC(RIGHT)))  &kp LS(LEFT)  &kp LEFT          &kp DOWN      &kp RIGHT          &kp LS(RIGHT)  &mkp MB5  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_DOWN  &trans
+&kp LS(LA(LC(LEFT)))   &kp LS(HOME)  &kp LS(LA(LEFT))  &kp LS(DOWN)  &kp LS(LA(RIGHT))  &kp LS(END)    &none     &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &none           &studio_unlock
+&trans                 &trans        &trans            &trans        &trans             &trans         &trans    &trans          &trans          &trans
             >;
         };
 
-        sym_layer {
+        sym {
             bindings = <
-&kp KP_NUMLOCK  &kp FSLH     &kp N7  &kp N8   &kp N9   &kp STAR   &kp LS(UNDER)  &kp LS(AMPS)  &kp LS(STAR)   &kp LS(LPAR)    &kp LS(RPAR)  &kp DEL
-&trans          &kp LS(TAB)  &kp N4  &kp N5   &kp N6   &kp MINUS  &kp LS(LBRC)   &kp LS(DLLR)  &kp LS(PRCNT)  &kp LS(CARET)   &kp LS(RBRC)  &trans
-&trans          &kp EQUAL    &kp N1  &kp N2   &kp N3   &kp PLUS   &kp LS(PLUS)   &kp LS(EXCL)  &kp LS(AT)     &kp LS(POUND)   &kp LS(PIPE)  &trans
-&trans          &trans       &kp N0  &kp DOT  &kp RET  &trans     &trans         &trans        &trans         &studio_unlock
+&kp KP_NUMLOCK  &kp FSLH     &kp N7  &kp N8   &kp N9  &kp STAR   &kp LS(UNDER)  &kp LS(AMPS)  &kp LS(STAR)   &kp LS(LPAR)   &kp LS(RPAR)  &kp DEL
+&trans          &kp LS(TAB)  &kp N4  &kp N5   &kp N6  &kp MINUS  &kp LS(LBRC)   &kp LS(DLLR)  &kp LS(PRCNT)  &kp LS(CARET)  &kp LS(RBRC)  &trans
+&trans          &kp EQUAL    &kp N1  &kp N2   &kp N3  &kp PLUS   &kp LS(PLUS)   &kp LS(EXCL)  &kp LS(AT)     &kp LS(POUND)  &kp LS(PIPE)  &studio_unlock
+&trans          &trans       &kp N0  &kp DOT  &trans  &trans     &trans         &trans        &trans         &trans
             >;
         };
 
-        fun_layer {
+        fun {
             bindings = <
-&kp F1          &kp F2        &kp F3        &kp F4        &kp F5          &kp F6        &kp F7  &kp F8          &kp F9          &kp F10          &kp F11       &kp F12
-&bt BT_CLR_ALL  &trans        &trans        &trans        &studio_unlock  &trans        &trans  &trans          &msc SCRL_LEFT  &msc SCRL_DOWN   &msc SCRL_UP  &msc SCRL_RIGHT
-&bt BT_CLR      &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3    &bt BT_SEL 4  &trans  &mkp MB5        &mkp MB4        &mkp LCLK        &mmv MOVE_UP  &mkp RCLK
-&bootloader     &trans        &trans        &trans        &trans          &trans        &trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT
+&kp F1          &kp F2        &kp F3        &kp F4        &kp F5          &kp F6        &kp F7  &kp F8     &kp F9  &kp F10  &kp F11  &kp F12
+&bt BT_CLR_ALL  &none         &none         &none         &studio_unlock  &none         &none   &soft_off  &none   &none    &none    &trans
+&bt BT_CLR      &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3    &bt BT_SEL 4  &none   &none      &none   &none    &none    &studio_unlock
+&bootloader     &none         &none         &none         &none           &none         &none   &none      &none   &none
             >;
         };
     };
