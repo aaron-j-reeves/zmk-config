@@ -12,7 +12,14 @@
 / {
     chosen { zmk,physical-layout = &layout_ortho_4x12_2x2u; };
 
-    cond_layers { compatible = "zmk,conditional-layers"; };
+    cond_layers {
+        compatible = "zmk,conditional-layers";
+
+        media {
+            if-layers = <1 3>;
+            then-layer = <5>;
+        };
+    };
 
     combos {
         compatible = "zmk,combos";
@@ -42,18 +49,18 @@
 
         num {
             bindings = <
-&kp GRAVE  &none   &none   &none   &none      &none      &none      &kp N7   &kp N8     &kp N9   &none     &kp DEL
-&trans     &none   &none   &none   &none      &none      &kp LBKT   &kp N4   &kp N5     &kp N6   &kp RBKT  &trans
-&trans     &none   &none   &none   &none      &none      &kp EQUAL  &kp N1   &kp N2     &kp N3   &kp END   &studio_unlock
-&trans     &trans  &trans  &trans  &kp SPACE  &kp MINUS  &kp N0     &kp DOT  &kp COMMA  &kp RET
+&kp GRAVE  &kp LC(LA(UP_ARROW))  &kp LC(DOWN)          &kp LA(UP)    &kp LA(LS(UP))         &kp LC(LS(LEFT_BRACKET))   &none      &kp N7   &kp N8     &kp N9   &none     &kp DEL
+&trans     &kp LC(LA(DOWN))      &kp LC(LA(LS(LEFT)))  &kp LA(DOWN)  &kp LC(LA(LS(RIGHT)))  &kp LC(LS(RIGHT_BRACKET))  &kp LBKT   &kp N4   &kp N5     &kp N6   &kp RBKT  &trans
+&trans     &none                 &kp DEL               &kp END       &kp LC(GRAVE)          &none                      &kp EQUAL  &kp N1   &kp N2     &kp N3   &kp END   &studio_unlock
+&trans     &trans                &trans                &trans        &kp SPACE              &kp MINUS                  &kp N0     &kp DOT  &kp COMMA  &kp RET
             >;
         };
 
         nav {
             bindings = <
-&kp LS(UP)             &kp HOME      &kp LA(LEFT)      &kp UP        &kp LA(RIGHT)      &kp END        &mkp MB4  &mkp LCLK       &mmv MOVE_UP    &mkp RCLK        &msc SCRL_UP    &trans
+&kp LS(UP)             &kp HOME      &kp LA(LEFT)      &kp UP        &kp LA(RIGHT)      &kp END        &mkp MB4  &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &msc SCRL_UP    &trans
 &kp LS(LA(LC(RIGHT)))  &kp LS(LEFT)  &kp LEFT          &kp DOWN      &kp RIGHT          &kp LS(RIGHT)  &mkp MB5  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_DOWN  &trans
-&kp LS(LA(LC(LEFT)))   &kp LS(HOME)  &kp LS(LA(LEFT))  &kp LS(DOWN)  &kp LS(LA(RIGHT))  &kp LS(END)    &none     &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &none           &studio_unlock
+&kp LS(LA(LC(LEFT)))   &kp LS(HOME)  &kp LS(LA(LEFT))  &kp LS(DOWN)  &kp LS(LA(RIGHT))  &kp LS(END)    &none     &mkp LCLK       &mkp MCLK       &mkp RCLK        &none           &studio_unlock
 &trans                 &trans        &trans            &trans        &trans             &trans         &trans    &trans          &trans          &trans
             >;
         };
@@ -67,12 +74,21 @@
             >;
         };
 
-        fun {
+        func {
             bindings = <
 &kp F1          &kp F2        &kp F3        &kp F4        &kp F5          &kp F6        &kp F7  &kp F8     &kp F9  &kp F10  &kp F11  &kp F12
 &bt BT_CLR_ALL  &none         &none         &none         &studio_unlock  &none         &none   &soft_off  &none   &none    &none    &trans
 &bt BT_CLR      &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3    &bt BT_SEL 4  &none   &none      &none   &none    &none    &studio_unlock
 &bootloader     &none         &none         &none         &none           &none         &none   &none      &none   &none
+            >;
+        };
+
+        media {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans            &trans       &kp C_BRI_DEC  &kp C_VOL_UP  &kp C_BRI_UP  &trans      &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &kp C_PAUSE  &kp C_PREV     &kp C_VOL_DN  &kp C_NEXT    &kp C_PLAY  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans       &kp C_REWIND   &kp C_MUTE    &kp C_FF      &trans      &trans
+&trans  &trans  &trans  &trans  &trans  &kp C_PLAY_PAUSE  &trans       &trans         &trans        &trans        &trans      &trans
             >;
         };
     };
