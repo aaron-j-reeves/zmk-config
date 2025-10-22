@@ -13,14 +13,7 @@
 / {
     chosen { zmk,physical-layout = &layout_ortho_4x12_2x2u; };
 
-    cond_layers {
-        compatible = "zmk,conditional-layers";
-
-        media {
-            if-layers = <1 3>;
-            then-layer = <5>;
-        };
-    };
+    cond_layers { compatible = "zmk,conditional-layers"; };
 
     combos {
         compatible = "zmk,combos";
